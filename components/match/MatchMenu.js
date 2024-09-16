@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 export default function MatchMenu(props) {
   const { menu, setMenu } = props;
   return (
-    <View className="flex-row px-6 justify-between items-center">
+    <View className="flex-row px-6 justify-center space-x-2 items-center">
       {menu === "Match" ? (
         <TouchableOpacity onPress={() => setMenu("Match")}>
           <LinearGradient
@@ -14,7 +14,7 @@ export default function MatchMenu(props) {
             colors={["#F4A58A", "#ED6B4E"]}
             className=" rounded-full py-3 px-6 flex items-center justify-center"
           >
-            <Text className="text-white font-semibold ">Match Details</Text>
+            <Text className="text-white font-semibold ">Statistics</Text>
           </LinearGradient>
         </TouchableOpacity>
       ) : (
@@ -26,7 +26,7 @@ export default function MatchMenu(props) {
             className="text-white font-semibold "
             onPress={() => setMenu("Match")}
           >
-            Match Details
+            Statistics
           </Text>
         </View>
       )}

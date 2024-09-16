@@ -1,36 +1,87 @@
-import React from "react";
-import { View, Text, ScrollView, Image } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useState } from "react";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import HomeLineup from "./lineups/HomeLineup";
+import AwayLineup from "./lineups/AwayLineup";
 
 export default function LineUp(props) {
   const { lineups } = props;
+  const [showLineup, setShowLineup] = useState(true);
 
-  console.log(lineups[0]);
+  const home = lineups.response[0];
+  const away = lineups.response[1];
 
-  const home = { formation: lineups[0].formation };
-
+  console.log(home);
   return (
     <ScrollView>
-      <View className="py-10 px-10 justify-center items-center">
-        <View className="w-fit relative">
-          <Image source={require("../../assets/fieldFootball.png")} />
-          <View className="absolute top-3 left-[33%] items-center justify-center text-center ">
-            <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
-              <Text className="text-white font-bold">9</Text>
-            </View>
-            <View className="bg-gray/50 rounded-md py-1 px-2">
-              <Text className="text-white font-bold text-xs">Nombre</Text>
-            </View>
+      <View className="px-6  flex-row justify-center items-center space-x-5 mt-10">
+        {showLineup === true ? (
+          <TouchableOpacity onPress={() => setShowLineup(true)}>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              colors={["#F4A58A", "#ED6B4E"]}
+              className=" rounded-full py-3 px-6 flex items-center justify-center"
+            >
+              <Text
+                className="text-white font-semibold "
+                onPress={() => setShowLineup(true)}
+              >
+                {home.team.name}
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        ) : (
+          <View
+            className="justify-center items-center space-y-3 w-1/3"
+            onPress={() => setShowLineup(true)}
+          >
+            <Text
+              className="text-white font-semibold "
+              onPress={() => setShowLineup(true)}
+            >
+              {home.team.name}
+            </Text>
           </View>
+        )}
 
-          <View className="absolute bottom-3 left-[33%] items-center justify-center text-center ">
-            <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
-              <Text className="text-white font-bold">9</Text>
-            </View>
-            <View className="bg-gray/50 rounded-md py-1 px-2">
-              <Text className="text-white font-bold text-xs">Nombre</Text>
-            </View>
+        {showLineup === false ? (
+          <TouchableOpacity onPress={() => setShowLineup(false)}>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              colors={["#F4A58A", "#ED6B4E"]}
+              className=" rounded-full py-3 px-6 flex items-center justify-center"
+            >
+              <Text
+                className="text-white font-semibold "
+                onPress={() => setShowLineup(false)}
+              >
+                {away.team.name}
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        ) : (
+          <View
+            className="justify-center items-center space-y-3 w-1/3"
+            onPress={() => setShowLineup(false)}
+          >
+            <Text
+              className="text-white font-semibold "
+              onPress={() => setShowLineup(false)}
+            >
+              {away.team.name}
+            </Text>
           </View>
-        </View>
+        )}
+      </View>
+
+      <View className="py-10 px-10 justify-center items-center">
+        {showLineup === true ? (
+          <HomeLineup coach={home.coach} formation={home.formation} />
+        ) : (
+          <AwayLineup coach={away.coach} formation={away.formation} />
+        )}
       </View>
     </ScrollView>
   );
