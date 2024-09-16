@@ -16,8 +16,6 @@ export default function Match(props) {
   const away = fixtureStatistics.response[1];
   const [menu, setMenu] = useState("Match");
 
-  
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -45,7 +43,9 @@ export default function Match(props) {
           {menu === "Match" && (
             <Details home={home.statistics} away={away.statistics} />
           )}
-          {menu === "Lineup" && <LineUp lineups={fixtureLineups} />}
+          {menu === "Lineup" && (
+            <LineUp lineups={fixtureLineups} score={score} />
+          )}
           {menu === "H2H" && <Htoh />}
         </View>
       </ScrollView>

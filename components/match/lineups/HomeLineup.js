@@ -1,34 +1,34 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
+import Formation433 from "./formations/Formation433";
 
 export default function HomeLineup(props) {
-  const { formation, coach } = props;
+  const { formation, coach, logo } = props;
 
-  console.log(coach);
+  console.log(formation);
   return (
     <View>
-      <View className="flex-row items-center justify-center mb-5">
+      <View className="flex-row items-center bg-blueShadow rounded-lg p-2 justify-around">
+        <Image
+          source={{
+            uri: `${coach.photo}`,
+          }}
+          className="h-14 w-14 rounded-lg"
+        />
+        <Text className="text-white font-semibold text-xl">{coach.name}</Text>
+        <Image
+          source={{
+            uri: `${logo}`,
+          }}
+          className="h-14 w-14 rounded-lg"
+        />
+      </View>
+      <View className="flex-row items-center justify-center my-5">
         <Text className="text-white text-xl font-semibold">{formation}</Text>
       </View>
-      <View className="w-fit relative">
-        <Image source={require("../../../assets/fieldFootball.png")} />
-        <View className="absolute top-3 left-[42%] items-center justify-center text-center ">
-          <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
-            <Text className="text-white font-bold">9</Text>
-          </View>
-          <View className="bg-gray/50 rounded-md py-1 px-2">
-            <Text className="text-white font-bold text-xs">Nombre</Text>
-          </View>
-        </View>
 
-        <View className="absolute bottom-3 left-[42%] items-center justify-center text-center ">
-          <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
-            <Text className="text-white font-bold">9</Text>
-          </View>
-          <View className="bg-gray/50 rounded-md py-1 px-2">
-            <Text className="text-white font-bold text-xs">Nombre</Text>
-          </View>
-        </View>
+      <View className="w-full  relative">
+        {formation === "4-3-3" && <Formation433 />}
       </View>
     </View>
   );

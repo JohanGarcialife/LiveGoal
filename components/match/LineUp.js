@@ -5,13 +5,22 @@ import HomeLineup from "./lineups/HomeLineup";
 import AwayLineup from "./lineups/AwayLineup";
 
 export default function LineUp(props) {
-  const { lineups } = props;
+  const { lineups, score } = props;
+  const {
+    awayLogo,
+    awayName,
+    awayScore,
+    homeLogo,
+    homeName,
+    homeScore,
+    status,
+  } = score;
   const [showLineup, setShowLineup] = useState(true);
 
   const home = lineups.response[0];
   const away = lineups.response[1];
 
-  console.log(home);
+  console.log(home.startXI);
   return (
     <ScrollView>
       <View className="px-6  flex-row justify-center items-center space-x-5 mt-10">
@@ -78,7 +87,11 @@ export default function LineUp(props) {
 
       <View className="py-10 px-10 justify-center items-center">
         {showLineup === true ? (
-          <HomeLineup coach={home.coach} formation={home.formation} />
+          <HomeLineup
+            coach={home.coach}
+            formation={home.formation}
+            logo={homeLogo}
+          />
         ) : (
           <AwayLineup coach={away.coach} formation={away.formation} />
         )}
