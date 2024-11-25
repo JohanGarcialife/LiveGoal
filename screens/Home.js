@@ -13,7 +13,7 @@ export default function Home(props) {
     });
   }, []);
   return (
-    <View className="min-h-screen bg-bg py-16">
+    <View className="min-h-screen bg-bg py-12">
       <ScrollView showsVerticalScrollIndicator={false}>
         <Header />
         <SliderBanner navigation={navigation} />

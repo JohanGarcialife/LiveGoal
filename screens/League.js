@@ -38,11 +38,11 @@ export default function League(props) {
       <ScrollView>
         <HeaderLeague name={name} logo={logo} />
         <MenuLeague menuActive={menuActive} setMenuActive={setMenuActive} />
-        {menuActive === 1 && <Standing id={id} />}
-        {menuActive === 2 && <TopScorers id={id} />}
-        {menuActive === 3 && <TopAssists id={id} />}
-        {menuActive === 4 && <TopYellowCards id={id} />}
-        {menuActive === 5 && <TopRedCards id={id} />}
+        {menuActive === 1 && <Standing id={id} navigation={navigation} />}
+        {menuActive === 2 && <TopScorers id={id} navigation={navigation} />}
+        {menuActive === 3 && <TopAssists id={id} navigation={navigation} />}
+        {menuActive === 4 && <TopYellowCards id={id} navigation={navigation} />}
+        {menuActive === 5 && <TopRedCards id={id} navigation={navigation} />}
       </ScrollView>
     </View>
   );

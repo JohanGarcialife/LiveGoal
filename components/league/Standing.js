@@ -1,8 +1,16 @@
-import { View, Text, Image } from "react-native";
 import React from "react";
+import { View, Text, Image } from "react-native";
 import { DataTable } from "react-native-paper";
 
-export default function Standing() {
+export default function Standing(props) {
+  const { navigation } = props;
+
+  const onNavigation = () => {
+    // navigation.navigate("Team", {
+    //   id,
+    // });
+    navigation.navigate("Team");
+  };
   const response = {
     league: {
       id: 39,
@@ -966,6 +974,7 @@ export default function Standing() {
                 "bg-redShadow rounded-xl mx-3 my-1 border-b-0")
             }
             key={item.rank}
+            onPress={onNavigation}
           >
             <DataTable.Cell>
               <Text className="text-white">{item.rank}</Text>

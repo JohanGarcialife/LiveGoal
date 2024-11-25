@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-export default function Formation433(props) {
+export default function Formation4231(props) {
   const { formation } = props;
 
   return (
@@ -23,7 +23,7 @@ export default function Formation433(props) {
         </View>
       </View>
 
-      <View className="absolute bottom-64 left-[42%] items-center space-y-1 justify-center text-center ">
+      <View className="absolute bottom-52 left-[42%] items-center space-y-1 justify-center text-center ">
         <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
           <Text className="text-white font-bold">
             {formation[9].player.number}
@@ -36,7 +36,7 @@ export default function Formation433(props) {
         </View>
       </View>
 
-      <View className="absolute bottom-64 left-[72%] items-center space-y-1 justify-center text-center ">
+      <View className="absolute bottom-72 left-[42%] items-center space-y-1 justify-center text-center ">
         <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
           <Text className="text-white font-bold">
             {formation[10].player.number}
@@ -51,7 +51,7 @@ export default function Formation433(props) {
 
       {/* Mediocampistas */}
 
-      <View className="absolute bottom-44 left-[10%] items-center space-y-1 justify-center text-center ">
+      <View className="absolute bottom-40 left-[22%] items-center space-y-1 justify-center text-center ">
         <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
           <Text className="text-white font-bold">
             {formation[5].player.number}
@@ -64,7 +64,7 @@ export default function Formation433(props) {
         </View>
       </View>
 
-      <View className="absolute bottom-44 left-[42%] items-center space-y-1 justify-center text-center ">
+      <View className="absolute bottom-40 left-[65%] items-center space-y-1 justify-center text-center ">
         <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
           <Text className="text-white font-bold">
             {formation[6].player.number}
@@ -77,7 +77,7 @@ export default function Formation433(props) {
         </View>
       </View>
 
-      <View className="absolute bottom-44 left-[72%] items-center space-y-1 justify-center text-center ">
+      <View className="absolute bottom-64 left-[72%] items-center space-y-1 justify-center text-center ">
         <View className="bg-green h-10 w-10 items-center justify-center rounded-full  border-2 border-white/50">
           <Text className="text-white font-bold">
             {formation[7].player.number}

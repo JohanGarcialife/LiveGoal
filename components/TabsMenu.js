@@ -1,12 +1,21 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function TabsMenu(props) {
   const { tab, setTab } = props;
+
+  const navigation = useNavigation();
+
+  function goHome() {
+    setTab("Home");
+    navigation.navigate("Home");
+  }
+
   return (
     <View className="bg-mediumgray w-full p-6 flex-row items-center justify-center">
       <View className="flex-row items-center justify-center w-full space-x-20">
-        <TouchableOpacity onPress={() => setTab("Home")} className="">
+        <TouchableOpacity onPress={goHome} className="">
           {tab === "Home" ? (
             <View className="items-center space-y-1">
               <Text className="text-blue text-xs">Home</Text>

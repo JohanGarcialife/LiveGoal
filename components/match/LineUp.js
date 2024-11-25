@@ -20,7 +20,6 @@ export default function LineUp(props) {
   const home = lineups.response[0];
   const away = lineups.response[1];
 
-  console.log(home.startXI);
   return (
     <ScrollView>
       <View className="px-6  flex-row justify-center items-center space-x-5 mt-10">
@@ -91,9 +90,17 @@ export default function LineUp(props) {
             coach={home.coach}
             formation={home.formation}
             logo={homeLogo}
+            home={home.startXI}
+            substitutes={home.substitutes}
           />
         ) : (
-          <AwayLineup coach={away.coach} formation={away.formation} />
+          <AwayLineup
+            coach={away.coach}
+            formation={away.formation}
+            logo={awayLogo}
+            away={away.startXI}
+            substitutes={away.substitutes}
+          />
         )}
       </View>
     </ScrollView>
