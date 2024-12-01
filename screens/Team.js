@@ -2,6 +2,8 @@ import React, { useLayoutEffect } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { team, teamStatistic } from "../utils/Samples";
+import Info from "../components/team/Info";
+import Data from "../components/team/Data";
 
 export default function Team(props) {
   const { navigation, route } = props;
@@ -12,8 +14,6 @@ export default function Team(props) {
       headerShown: false,
     });
   }, []);
-
-  console.log(teamStatistic.response);
 
   return (
     <View className="min-h-screen bg-bg py-16 ">
@@ -29,10 +29,22 @@ export default function Team(props) {
           <View className="w-8" />
         </View>
       </TouchableOpacity>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        className="mb-8"
-      ></ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false} className="mb-8">
+        <Info
+          team={teamStatistic.response.team}
+          league={teamStatistic.response.league}
+        />
+        <Data
+          fixtures={teamStatistic.response.fixtures}
+          goals={teamStatistic.response.goals}
+          penalty={teamStatistic.response.penalty}
+          form={teamStatistic.response.form}
+          biggest={teamStatistic.response.biggest}
+          cards={teamStatistic.response.cards}
+          cleanSheets={teamStatistic.response.clean_sheet}
+          failedToScore={teamStatistic.response.failed_to_score}
+        />
+      </ScrollView>
     </View>
   );
 }
