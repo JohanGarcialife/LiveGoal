@@ -7,7 +7,7 @@ export default function MenuTeam(props) {
 
   const menu = [
     { id: 1, name: "Form" },
-    { id: 2, name: "Fixture" },
+    { id: 2, name: "Fixtures" },
     { id: 3, name: "Biggest" },
     { id: 4, name: "Goals" },
     { id: 5, name: "Penalty" },

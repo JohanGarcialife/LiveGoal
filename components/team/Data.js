@@ -23,8 +23,6 @@ export default function Data(props) {
     failedToScore,
   } = props;
 
-  console.log(fixtures);
-
   return (
     <View className="px-6 space-y-3">
       <MenuTeam menuActive={menuActive} setMenuActive={setMenuActive} />

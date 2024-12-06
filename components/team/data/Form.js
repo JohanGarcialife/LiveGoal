@@ -6,7 +6,7 @@ export default function Form(props) {
 
   return (
     <View className="bg-mediumgray/50 rounded-lg p-4 my-2 space-y-3 ">
-      <Text className="text-xl text-white font-bold text-center">Form</Text>
+      <Text className=" text-white text-3xl font-bold text-center">Form</Text>
       <View className="flex-row items-center justify-center space-x-2">
         <View
           className={
