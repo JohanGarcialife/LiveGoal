@@ -1,23 +1,33 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import Formation433 from "./formations/Formation433";
 import Formation4231 from "./formations/Formation4231";
 import { DataTable } from "react-native-paper";
 
 export default function HomeLineup(props) {
-  const { formation, coach, logo, home, substitutes } = props;
+  const { formation, coach, logo, home, substitutes, navigation } = props;
 
-  
+  const onNavigationCoach = () => {
+    // setActive(id);
+    navigation.navigate("Coach");
+    // navigation.navigate("Coach", {
+    //   id,
+    //   name,
+    //   logo,
+    // });
+  };
 
   return (
     <View className="w-screen px-4">
       <View className="flex-row items-center bg-blueShadow rounded-lg p-2 justify-around  mt-5">
-        <Image
-          source={{
-            uri: `${coach.photo}`,
-          }}
-          className="h-14 w-14 rounded-lg"
-        />
+        <TouchableOpacity onPress={onNavigationCoach}>
+          <Image
+            source={{
+              uri: `${coach.photo}`,
+            }}
+            className="h-14 w-14 rounded-lg"
+          />
+        </TouchableOpacity>
         <Text className="text-white font-semibold text-xl">{coach.name}</Text>
         <Image
           source={{
@@ -75,7 +85,9 @@ export default function HomeLineup(props) {
       </View>
 
       <View className="my-5">
-        <Text className="text-white text-center font-bold text-lg">Substitutes</Text>
+        <Text className="text-white text-center font-bold text-lg">
+          Substitutes
+        </Text>
         <DataTable>
           <DataTable.Header className="mx-3 mb-1">
             <DataTable.Title>

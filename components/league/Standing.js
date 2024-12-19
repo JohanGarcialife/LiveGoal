@@ -5,12 +5,6 @@ import { DataTable } from "react-native-paper";
 export default function Standing(props) {
   const { navigation } = props;
 
-  const onNavigation = () => {
-    // navigation.navigate("Team", {
-    //   id,
-    // });
-    navigation.navigate("Team");
-  };
   const response = {
     league: {
       id: 39,
@@ -963,64 +957,81 @@ export default function Standing(props) {
         </DataTable.Header>
 
         {response.league.standings[0].map((item) => (
-          <DataTable.Row
-            className={
-              (item.description === "Champions League" &&
-                "bg-blueShadow rounded-xl mx-3 my-1 border-b-0") ||
-              (item.description === "UEFA Europa League" &&
-                "bg-orangeShadow rounded-xl mx-3 my-1 border-b-0") ||
-              (item.description === null && "mx-3 my-1 border-b-0") ||
-              (item.description === "Relegation" &&
-                "bg-redShadow rounded-xl mx-3 my-1 border-b-0")
-            }
-            key={item.rank}
-            onPress={onNavigation}
-          >
-            <DataTable.Cell>
-              <Text className="text-white">{item.rank}</Text>
-            </DataTable.Cell>
-            <DataTable.Cell style={{ flex: 5 }}>
-              <View className="flex-row items-center space-x-1">
-                <Image
-                  source={{
-                    uri: `${item.team.logo}`,
-                  }}
-                  className="h-4 w-4"
-                />
-                <Text>
-                  <Text className="text-white text-xs">{item.team.name}</Text>
-                </Text>
-              </View>
-            </DataTable.Cell>
-
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.all.played}</Text>
-            </DataTable.Cell>
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.all.win}</Text>
-            </DataTable.Cell>
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.all.draw}</Text>
-            </DataTable.Cell>
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.all.lose}</Text>
-            </DataTable.Cell>
-
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.all.goals.for}</Text>
-            </DataTable.Cell>
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.all.goals.against}</Text>
-            </DataTable.Cell>
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.goalsDiff}</Text>
-            </DataTable.Cell>
-            <DataTable.Cell style={{ justifyContent: "center" }}>
-              <Text className="text-white">{item.points}</Text>
-            </DataTable.Cell>
-          </DataTable.Row>
+          <Row
+            navigation={navigation}
+            item={item}
+            id={item.team.id}
+            key={item.team.id}
+          />
         ))}
       </DataTable>
     </View>
+  );
+}
+
+function Row(props) {
+  const { navigation, item, id } = props;
+  const onNavigation = () => {
+    navigation.navigate("Team", {
+      id,
+    });
+  };
+  return (
+    <DataTable.Row
+      className={
+        (item.description === "Champions League" &&
+          "bg-blueShadow rounded-xl mx-3 my-1 border-b-0") ||
+        (item.description === "UEFA Europa League" &&
+          "bg-orangeShadow rounded-xl mx-3 my-1 border-b-0") ||
+        (item.description === null && "mx-3 my-1 border-b-0") ||
+        (item.description === "Relegation" &&
+          "bg-redShadow rounded-xl mx-3 my-1 border-b-0")
+      }
+      key={item.rank}
+      onPress={onNavigation}
+    >
+      <DataTable.Cell>
+        <Text className="text-white">{item.rank}</Text>
+      </DataTable.Cell>
+      <DataTable.Cell style={{ flex: 5 }}>
+        <View className="flex-row items-center space-x-1">
+          <Image
+            source={{
+              uri: `${item.team.logo}`,
+            }}
+            className="h-4 w-4"
+          />
+          <Text>
+            <Text className="text-white text-xs">{item.team.name}</Text>
+          </Text>
+        </View>
+      </DataTable.Cell>
+
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.all.played}</Text>
+      </DataTable.Cell>
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.all.win}</Text>
+      </DataTable.Cell>
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.all.draw}</Text>
+      </DataTable.Cell>
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.all.lose}</Text>
+      </DataTable.Cell>
+
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.all.goals.for}</Text>
+      </DataTable.Cell>
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.all.goals.against}</Text>
+      </DataTable.Cell>
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.goalsDiff}</Text>
+      </DataTable.Cell>
+      <DataTable.Cell style={{ justifyContent: "center" }}>
+        <Text className="text-white">{item.points}</Text>
+      </DataTable.Cell>
+    </DataTable.Row>
   );
 }

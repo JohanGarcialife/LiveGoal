@@ -8,7 +8,9 @@ import Data from "../components/player/Data";
 export default function Player(props) {
   const { navigation, route } = props;
   const { params } = route;
-  //   const { id, name, logo } = params;
+  const { id } = params;
+
+  console.log("id =", id);
 
   useLayoutEffect(() => {
     navigation.setOptions({

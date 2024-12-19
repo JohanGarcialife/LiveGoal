@@ -8,7 +8,10 @@ import Data from "../components/team/Data";
 export default function Team(props) {
   const { navigation, route } = props;
   const { params } = route;
-  //   const { id, name, logo } = params;
+  const { id, name } = params;
+
+  console.log("id =", id);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,

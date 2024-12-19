@@ -5,7 +5,7 @@ import HomeLineup from "./lineups/HomeLineup";
 import AwayLineup from "./lineups/AwayLineup";
 
 export default function LineUp(props) {
-  const { lineups, score } = props;
+  const { lineups, score, navigation } = props;
   const {
     awayLogo,
     awayName,
@@ -92,6 +92,7 @@ export default function LineUp(props) {
             logo={homeLogo}
             home={home.startXI}
             substitutes={home.substitutes}
+            navigation={navigation}
           />
         ) : (
           <AwayLineup
@@ -100,6 +101,7 @@ export default function LineUp(props) {
             logo={awayLogo}
             away={away.startXI}
             substitutes={away.substitutes}
+            navigation={navigation}
           />
         )}
       </View>

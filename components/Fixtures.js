@@ -646,6 +646,7 @@ function FixturesList(props) {
           <View className="flex-row items-center space-x-2">
             <View className="bg-gray/50 p-2 rounded-lg">
               <Image
+                style={{ resizeMode: "contain" }}
                 source={{
                   uri: `${logo}`,
                 }}

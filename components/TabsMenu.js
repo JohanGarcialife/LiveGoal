@@ -11,6 +11,14 @@ export default function TabsMenu(props) {
     setTab("Home");
     navigation.navigate("Home");
   }
+  function goStandings() {
+    setTab("Standings");
+    navigation.navigate("Standings");
+  }
+  function goExplore() {
+    setTab("Explore");
+    navigation.navigate("Explore");
+  }
 
   return (
     <View className="bg-mediumgray w-full p-6 flex-row items-center justify-center">
@@ -28,7 +36,7 @@ export default function TabsMenu(props) {
             />
           )}
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setTab("Explore")} className="">
+        <TouchableOpacity onPress={goExplore} className="">
           {tab === "Explore" ? (
             <View className="items-center space-y-1">
               <Text className="text-blue text-xs">Explore</Text>
@@ -41,7 +49,7 @@ export default function TabsMenu(props) {
             />
           )}
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setTab("Standings")} className="">
+        <TouchableOpacity onPress={goStandings} className="">
           {tab === "Standings" ? (
             <View className="items-center space-y-1">
               <Text className="text-blue text-xs">Standings</Text>

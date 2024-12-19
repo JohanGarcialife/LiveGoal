@@ -7,7 +7,7 @@ export default function App() {
   const [tab, setTab] = useState("Home");
   return (
     <NavigationContainer>
-      <StackNavigation />
+      <StackNavigation tab={tab} setTab={setTab} />
       <TabsMenu tab={tab} setTab={setTab} />
     </NavigationContainer>
   );

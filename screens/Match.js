@@ -44,7 +44,11 @@ export default function Match(props) {
             <Details home={home.statistics} away={away.statistics} />
           )}
           {menu === "Lineup" && (
-            <LineUp lineups={fixtureLineups} score={score} />
+            <LineUp
+              lineups={fixtureLineups}
+              navigation={navigation}
+              score={score}
+            />
           )}
           {menu === "H2H" && <Htoh home={home.team.id} away={away.team.id} />}
         </View>

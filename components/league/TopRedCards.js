@@ -1,17 +1,11 @@
-import React from 'react'
-import { View, Text, Image } from 'react-native'
+import React from "react";
+import { View, Text, Image } from "react-native";
 import { DataTable } from "react-native-paper";
-import {topRedCards} from "../../utils/Samples"
+import { topRedCards } from "../../utils/Samples";
 
 export default function TopRedCards(props) {
-   const { navigation } = props;
+  const { navigation } = props;
 
-   const onNavigation = () => {
-     // navigation.navigate("Player", {
-     //   id,
-     // });
-     navigation.navigate("Player");
-   };
   return (
     <View className="mb-12">
       <DataTable>
@@ -31,40 +25,55 @@ export default function TopRedCards(props) {
         </DataTable.Header>
 
         {topRedCards.response.map((item) => (
-          <DataTable.Row
-            className="py-2"
+          <Row
+            navigation={navigation}
+            item={item}
+            id={item.player.id}
             key={item.player.id}
-            onPress={onNavigation}
-          >
-            <DataTable.Cell style={{ flex: 1 }}>
-              <View className="flex-row items-center space-x-1">
-                <Image
-                  source={{
-                    uri: `${item.player.photo}`,
-                  }}
-                  className="h-10 w-10 rounded-xl"
-                />
-              </View>
-            </DataTable.Cell>
-
-            <DataTable.Cell style={{ flex: 3 }}>
-              <Text className="text-white">{item.player.name}</Text>
-            </DataTable.Cell>
-
-            <DataTable.Cell style={{ flex: 3 }}>
-              <Text className="text-white text-center">
-                {item.statistics[0].team.name}
-              </Text>
-            </DataTable.Cell>
-
-            <DataTable.Cell style={{ flex: 1 }}>
-              <Text className="text-white text-center">
-                {item.statistics[0].goals.total}
-              </Text>
-            </DataTable.Cell>
-          </DataTable.Row>
+          />
         ))}
       </DataTable>
     </View>
+  );
+}
+
+function Row(props) {
+  const { navigation, item, id } = props;
+  console.log(id);
+
+  const onNavigation = () => {
+    navigation.navigate("Player", {
+      id,
+    });
+  };
+  return (
+    <DataTable.Row className="py-2" key={item.player.id} onPress={onNavigation}>
+      <DataTable.Cell style={{ flex: 1 }}>
+        <View className="flex-row items-center space-x-1">
+          <Image
+            source={{
+              uri: `${item.player.photo}`,
+            }}
+            className="h-10 w-10 rounded-xl"
+          />
+        </View>
+      </DataTable.Cell>
+
+      <DataTable.Cell style={{ flex: 3 }}>
+        <Text className="text-white">{item.player.name}</Text>
+      </DataTable.Cell>
+
+      <DataTable.Cell style={{ flex: 3 }}>
+        <Text className="text-white text-center">
+          {item.statistics[0].team.name}
+        </Text>
+      </DataTable.Cell>
+
+      <DataTable.Cell style={{ flex: 1 }}>
+        <Text className="text-white text-center">
+          {item.statistics[0].goals.total}
+        </Text>
+      </DataTable.Cell>
+    </DataTable.Row>
   );
 }
